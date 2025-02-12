@@ -73,7 +73,6 @@ const processMessage = ({ data }) => {
       userId === user.id
         ? createMessageSelfElement(content)
         : createMessageOtherElement(content, userName, userColor);
-
     chatMessages.appendChild(message);
     scrollScreen();
   } catch (error) {
