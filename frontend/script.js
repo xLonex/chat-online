@@ -26,7 +26,7 @@ let websocket;
 console.log("Script chat.js carregado");
 
 // Funções de criação de elementos
-const createMessageSelfElement = (content) => {
+createMessageSelfElement = (content) => {
   const div = document.createElement("div");
   div.classList.add("message--self");
   div.textContent = content;
