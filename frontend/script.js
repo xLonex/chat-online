@@ -82,7 +82,7 @@ const processMessage = ({ data }) => {
 
 // Handlers WebSocket
 const setupWebSocket = () => {
-  websocket = new WebSocket("wss://chat-online-b6dy.onrender.com");
+  websocket = new WebSocket("wss://gustavosantoschatonline.onrender.com");
 
   websocket.onopen = () => {
     console.log("Conectado ao servidor WebSocket");
