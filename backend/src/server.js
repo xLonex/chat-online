@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // Caminho para a pasta frontend
-const frontendPath = path.join(__dirname, "../frontend");
+const frontendPath = path.join(__dirname, "../../frontend");
 
 // Serve os arquivos estáticos (frontend)
 app.use(express.static(frontendPath));
