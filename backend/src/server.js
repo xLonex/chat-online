@@ -5,8 +5,16 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 8080;
 
+// Caminho para a pasta frontend
+const frontendPath = path.join(__dirname, "../frontend");
+
 // Serve os arquivos estáticos (frontend)
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(frontendPath));
+
+// Rota padrão para servir o index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 // Inicia o servidor HTTP
 const server = app.listen(port, () => {
