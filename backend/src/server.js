@@ -1,13 +1,20 @@
+const express = require("express");
 const { WebSocketServer } = require("ws");
-const dotenv = require("dotenv");
+const path = require("path");
 
-dotenv.config();
-
-// Define a porta usando a variável de ambiente do Render ou 8080 como fallback
+const app = express();
 const port = process.env.PORT || 8080;
 
+// Serve os arquivos estáticos (frontend)
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+// Inicia o servidor HTTP
+const server = app.listen(port, () => {
+  console.log(`Servidor HTTP rodando na porta ${port}`);
+});
+
 // Inicia o servidor WebSocket
-const wss = new WebSocketServer({ port });
+const wss = new WebSocketServer({ server });
 
 wss.on("connection", (ws) => {
   ws.on("error", console.error);
@@ -18,6 +25,3 @@ wss.on("connection", (ws) => {
 
   console.log("client connected");
 });
-
-// Loga a porta em que o servidor está rodando
-console.log(`WebSocketServer is running on port ${port}`);
